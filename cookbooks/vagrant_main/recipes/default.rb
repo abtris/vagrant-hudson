@@ -19,3 +19,8 @@ end
 %w{ debconf subversion mc htop curl jenkins }.each do |a_package|
   package a_package
 end
+
+execute "cli-install" do
+  command "wget http://localhost:8080/jnlpJars/jenkins-cli.jar"
+  action :run
+end
