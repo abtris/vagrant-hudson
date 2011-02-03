@@ -10,6 +10,11 @@ execute "update-sources" do
   action :run
 end
 
+execute "apt-update" do
+  command "sudo apt-get update"
+  action :run
+end
+
 # Some neat package (subversion is needed for "subversion" chef ressource)
 %w{ debconf subversion mc htop curl jenkins }.each do |a_package|
   package a_package
