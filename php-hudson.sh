@@ -12,7 +12,7 @@ java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin git
 java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin github
 java -jar jenkins-cli.jar -s http://localhost:8080 safe-restart
 
-
 sudo git clone git://github.com/sebastianbergmann/php-jenkins-template.git /var/lib/jenkins/jobs/php-template
 sudo chown -Rf jenkins /var/lib/jenkins/jobs/
 java -jar jenkins-cli.jar -s http://localhost:8080 reload-configuration
+

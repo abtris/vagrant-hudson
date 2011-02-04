@@ -14,3 +14,5 @@ sudo pear install PHPDocumentor
 sudo pear install PHP_CodeSniffer
 sudo pear install --alldeps phpunit/PHP_CodeBrowser
 sudo pear install --alldeps phpunit/PHPUnit
+
+exit 0
