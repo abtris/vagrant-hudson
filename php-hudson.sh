@@ -8,9 +8,11 @@ java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin plot
 java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin pmd
 java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin violations
 java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin xunit
+java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin git
+java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin github
 java -jar jenkins-cli.jar -s http://localhost:8080 safe-restart
 
-cd $JENKINS_HOME/jobs
-git clone git://github.com/sebastianbergmann/php-jenkins-template.git php-template
 
+sudo git clone git://github.com/sebastianbergmann/php-jenkins-template.git /var/lib/jenkins/jobs/php-template
+sudo chown -Rf jenkins /var/lib/jenkins/jobs/
 java -jar jenkins-cli.jar -s http://localhost:8080 reload-configuration
