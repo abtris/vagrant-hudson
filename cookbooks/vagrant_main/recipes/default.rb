@@ -1,6 +1,5 @@
 require_recipe "apt" 
 require_recipe "git"
-require_recipe "php::php5" 
 
 execute "jenkins-key" do                                                                                                                            
   command "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -"                                                                                     
@@ -18,7 +17,7 @@ execute "apt-update" do
 end
 
 # Some neat package (subversion is needed for "subversion" chef ressource)
-%w{ debconf subversion mc htop curl jenkins php5-xdebug }.each do |a_package|
+%w{ debconf subversion mc htop curl jenkins php5-xdebug php5-cli php-pear}.each do |a_package|
   package a_package
 end
 
