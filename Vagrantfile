@@ -34,9 +34,9 @@ Vagrant::Config.run do |config|
 	 chef.add_recipe("vagrant_main") 
   end
 
-  config.vm.provision :shell, :path => "pear-php.sh"  
-
   config.vm.provision :shell, :path => "php-hudson.sh"
+
+  config.vm.provision :shell, :path => "pear-php.sh"  
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
