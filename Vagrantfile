@@ -1,6 +1,6 @@
 Vagrant::Config.run do |config|
 
-  config.vm.box = "lucid64"
+  config.vm.box = "lucid32"
 
   # Assign this VM to a host only network IP, allowing you to access it
   # via the IP.
