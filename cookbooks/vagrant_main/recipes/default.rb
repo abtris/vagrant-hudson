@@ -18,7 +18,7 @@ execute "apt-update" do
 end
 
 # Some neat package (subversion is needed for "subversion" chef ressource)
-%w{ debconf ant subversion mc htop curl php5-xdebug php5-curl gawk jenkins}.each do |a_package|
+%w{ debconf ant subversion mc htop curl php5-xdebug php5-curl php5-gd gawk jenkins}.each do |a_package|
   package a_package
 end
 
