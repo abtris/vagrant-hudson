@@ -1,6 +1,6 @@
 [submodule "cookbooks/jenkins"]
 	path = cookbooks/jenkins
 	url = git://github.com/fnichol/chef-jenkins.git
-[submodule "cookbooks/vagrant_main/templates/php-template"]
-	path = cookbooks/vagrant_main/templates/php-template
+[submodule "cookbooks/vagrant_main/templates/default/php-template"]
+	path = cookbooks/vagrant_main/templates/default/php-template
 	url = git://github.com/sebastianbergmann/php-jenkins-template.git
