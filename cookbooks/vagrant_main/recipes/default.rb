@@ -1,24 +1,10 @@
 require_recipe "apt" 
 require_recipe "git"
 require_recipe "php"
-
-execute "jenkins-key" do                                                                                                                            
-  command "wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -"                                                                                     
-  action :run                                                                                                                                                
-end
-
-execute "update-sources" do
-  command "echo \"deb http://pkg.jenkins-ci.org/debian binary/\" >>/etc/apt/sources.list"
-  action :run
-end
-
-execute "apt-update" do
-  command "sudo apt-get update"
-  action :run
-end
+require_recipe "jenkins"
 
 # Some neat package (subversion is needed for "subversion" chef ressource)
-%w{ debconf ant subversion mc htop curl php5-xdebug php5-curl php5-gd gawk jenkins}.each do |a_package|
+%w{debconf ant subversion mc htop curl php5-xdebug php5-curl php5-gd gawk}.each do |a_package|
   package a_package
 end
 
@@ -52,3 +38,18 @@ php_pear "phpunit/PHPUnit" do
   options "--alldeps"
   action :install
 end
+
+directory "#{node[:jenkins][:server][:home]}/jobs/php-template" do
+  recursive true
+  owner node[:jenkins][:server][:user]
+  group node[:jenkins][:server][:group]
+end
+
+template "#{node[:jenkins][:server][:home]}/jobs/php-template/config.xml" do
+  source "php-template/config.xml"
+  owner node[:jenkins][:server][:user]
+  group node[:jenkins][:server][:group]
+  not_if { File.exists?("#{node[:jenkins][:server][:home]}/jobs/php-template/config.xml") }
+end
+
+jenkins_cli "reload-configuration"
