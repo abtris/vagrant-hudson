@@ -22,10 +22,15 @@ Vagrant::Config.run do |config|
   # to this Vagrantfile), and adding some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
-     chef.cookbooks_path = "cookbooks"
-	 chef.add_recipe("vagrant_main") 
+    chef.cookbooks_path = "cookbooks"
+    chef.json = {
+      :jenkins => {
+        :server => {
+          :plugins => %w(checkstyle clover dry htmlpublisher jdepend plot pmd violations xunit git github)
+        }
+      }
+    }
+	  chef.add_recipe("vagrant_main") 
   end
-
-  config.vm.provision :shell, :path => "php-jenkins.sh"
 
 end
